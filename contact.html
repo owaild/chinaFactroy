@@ -376,8 +376,59 @@
       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- End Footer -->
     <script type="text/javascript">
+  $(document).ready(function () {
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+$('#formA').on('submit', function (e) {
+    e.preventDefault();
+
+    //get the name field value
+    var name = $('#Name').val();
+    var Phone = $('#Phone').val();
+    var Emaill = $('#Emaill').val();
+    var Message = $('#Message').val();
+  
+
+    $.ajax({
+        url: 'https://formspree.io/xoqrnqkk',
+        method: 'POST',
+        data: {
+            name: name,
+            Phone: Phone,
+            Email: Emaill,
+            Message: Message,
+        },
+        dataType: "json",
+        success: function () {
+            swal({
+                title: "Success!",
+                text: "You application was sent!",
+                icon:'success',
+                timer: 5000,
+                showCancelButton: false,
+                showConfirmButton: false
+            });
+            $('#Apply').addClass("disaple");
+            $('#Apply').attr("disabled", 'disabled');
+        },
+        error: function () {
+            swal({
+                title: "Error!",
+                icon:'error',
+                text: " Please check your information again!",
+                timer: 5000,
+                showCancelButton: false,
+                showConfirmButton: false
+            });
+        },
+
+    });
+
+});
+
+});
+function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+      }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
       </script>
     <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/jquery-1.12.3.min.js"></script>
     <script src="js/plugins.js"></script>
